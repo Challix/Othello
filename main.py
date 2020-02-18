@@ -16,7 +16,7 @@ HEIGHT = 40
 MARGIN = 5
 WINDOW_SIZE = [365, 420] 
 
-#initializes the board
+# Initializes the board
 board = Board()
 
 # Score text
@@ -89,7 +89,7 @@ def intro():
         if player1 and player2:
             return player1, player2
 
-# Button
+# Draws button
         if not pressed:
             button.draw(screen)
 # Title text        
@@ -127,9 +127,9 @@ def main():
     while running:
         pressed = False
 
-        for event in pygame.event.get():  # User did something
-            if event.type == pygame.QUIT:  # If user clicked close
-                running = False  # Flag that we are done so we exit this loop
+        for event in pygame.event.get():  
+            if event.type == pygame.QUIT:  
+                running = False  
                 break
             if event.type == pygame.MOUSEBUTTONDOWN:
                 # User clicks the mouse. Get the position
@@ -148,7 +148,6 @@ def main():
             validated = False
             if player == 1:
                print('Black player')
-#               print(row,column)
                board.tile_flip(player,row,column)
                board.show_valid(player)
                player = 2
@@ -219,11 +218,8 @@ def main():
     # Limit to 60 frames per second
         clock.tick(60)
      
-        # Go ahead and update the screen with what we've drawn.
+        # Updates the screen
         pygame.display.flip()
- 
-    # Be IDLE friendly. If you forget this line, the program will 'hang'
-    # on exit.
     
 
 if __name__ == '__main__':    

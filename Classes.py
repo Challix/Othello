@@ -108,6 +108,9 @@ class Board:
             
             
     def check_valid(self,player,row,column):
+        '''
+            checks click if valid move
+        '''
         if 0 > row or row > 7 or 0 > column  or column > 7:
             return False
         if self.board[row][column] == 3:
@@ -121,6 +124,9 @@ class Board:
             return False
     
     def tile_flip(self,player,row,column):
+        '''
+            flips the required tiles after a move
+        '''
         self.set_tile_flip(player,row,column,'left','down')
         self.set_tile_flip(player,row,column,'left','up')
         self.set_tile_flip(player,row,column,'right','down')
@@ -131,6 +137,9 @@ class Board:
         self.set_tile_flip(player,row,column,'right')
         
     def set_tile_flip(self,player,row,column,hor=None,vert=None):
+        '''
+            checks every direction if tile flip is required
+        '''
         check = 5
         points = []
         while check != player or 0 or 3:
@@ -190,6 +199,9 @@ class Board:
                     self.board[row][column] = player            
 
     def update_score(self):
+        '''
+            updates scoreboard
+        '''
         white = 0
         black = 0
         for row in self.board:
@@ -201,6 +213,9 @@ class Board:
         return black, white
                     
     def check_win(self):
+        '''
+            checks for Game Over
+        '''
         count = 0
         white = 0
         black = 0
@@ -222,7 +237,9 @@ class Board:
 
         
 class InputBox:
-
+    '''
+        Handles drawing input boxes
+    '''
     def __init__(self, x, y, w, h, text=''):
         self.rect = pg.Rect(x, y, w, h)
         self.color = COLOR_INACTIVE
@@ -267,7 +284,9 @@ class InputBox:
         pg.draw.rect(screen, self.color, self.rect, 3)
         
 class Button:
-    
+    '''
+        Handles drawing buttons
+    '''
     def __init__(self, x, y, w, h, s, text='BUTTON'):
         self.rect = pg.Rect(x, y, w, h)
         self.color = COLOR_INACTIVE
